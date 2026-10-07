@@ -2,44 +2,23 @@ import java.util.*;
 
 public class intersection_two_arrays{
      public static int[] intersect(int[] nums1, int[] nums2) {
-       ArrayList<Integer> arr=new ArrayList<>();
-        int []arr1=new int[arr.size()+1];
-        int same=0;
-        if(nums1.length==1&&nums2.length==1&&nums1[nums1.length-1]==nums2[nums2.length-1]) {
-        	arr.add(nums1[nums1.length-1]);
-//        	System.out.println(arr.size());
-        	 for(int i=0;i<arr.size();i++){
-                 arr1[i]=arr.get(i);
-             }           
-        	 return arr1;
-
-        }
-        	
-        	
-        for(int i=0;i<nums1.length;i++){
-           
-            
-            for(int j=0;j<nums2.length;j++){
-                
-                if(i!=j&&nums1[i]==nums2[j]&&nums1[i]!=same){
-                      same=nums2[j];
-                      break;
-                }else{
-                    same=0;
-                }
-            }
-            
-            
-            if(same>0){
-               arr.add(same);
-            }
-            
-        }
-         for(int i=0;i<arr.size();i++){
-             arr1[i]=arr.get(i);
-         }
-
-         return arr1;
+            ArrayList<Integer> arr=new ArrayList<>();
+       for(int i=0;i<nums1.length;i++) {
+    	   for(int j=0;j<nums2.length;j++) {
+    		  
+    		   if(nums1[i]==nums2[j]) {
+    			   arr.add(nums2[j]);
+    			   nums2[j]=-1;
+    			   break;
+    		   }
+    	   }  	  
+       }
+       int[]arr1=new int[arr.size()];
+       for(int i=0;i<arr.size();i++) {
+    	   arr1[i]=arr.get(i);
+       }
+      
+       return arr1;
 
         
     }
